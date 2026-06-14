@@ -1,0 +1,16 @@
+{
+  "name": "mazingira-on-mantle-api",
+  "version": "1.0.0",
+  "description": "Mazingira on Mantle API backend for T3 agent contract",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@vercel/node": "^3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

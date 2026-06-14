@@ -1,13 +1,3 @@
-/**
- * index.ts (root handler)
- *
- * GET / — health check and API documentation
- */
-
-import { VercelRequest, VercelResponse } from '@vercel/node';
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const html = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +40,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     .path { font-family: monospace; color: #555; }
     .desc { color: #666; margin: 10px 0 0 0; font-size: 14px; }
     code { background: #eee; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
-    pre { background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; }
+    pre { background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
     .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: 14px; }
     a { color: #667eea; text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -65,11 +55,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ✅ <strong>Status</strong>: Online and operational
     </div>
 
-    <h2>API Endpoints</h2>
+    <h2>Available Endpoints</h2>
 
     <div class="endpoint">
       <div><span class="method">POST</span> <span class="path">/api/agent</span></div>
       <p class="desc">AI-enriched market analysis for on-chain products</p>
+      <code>{"message": "...", "history": []}</code>
     </div>
 
     <div class="endpoint">
@@ -88,18 +79,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     </div>
 
     <h2>Quick Test</h2>
-    <pre>curl -X POST https://mazingira-on-mantle-api.vercel.app/api/agent \\
-  -H "Content-Type: application/json" \\
+    <pre>curl -X POST https://mazingira-on-mantle-api.vercel.app/api/agent \
+  -H "Content-Type: application/json" \
   -d '{"message":"Give me analysis for Token #3","history":[]}'</pre>
 
     <div class="footer">
-      <p>Part of <a href="https://github.com/MrKrugen/mazingira-t3-agent">Mazingira on Mantle T3 Agent</a> — Contract v0.3.1 | ID: 119</p>
+      <p>
+        Part of <a href="https://github.com/MrKrugen/mazingira-t3-agent">Mazingira on Mantle T3 Agent</a>
+        <br/>
+        Contract v0.3.1 | ID: 119
+      </p>
     </div>
   </div>
 </body>
 </html>
-  `;
-
-  res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  return res.status(200).send(html);
-}

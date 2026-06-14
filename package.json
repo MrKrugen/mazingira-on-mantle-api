@@ -4,8 +4,7 @@
   "description": "Mazingira on Mantle API backend for T3 agent contract",
   "private": true,
   "scripts": {
-    "dev": "vercel dev",
-    "build": "tsc"
+    "dev": "vercel dev"
   },
   "dependencies": {
     "@vercel/node": "^3.0.0"
